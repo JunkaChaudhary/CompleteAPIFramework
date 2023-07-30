@@ -6,10 +6,13 @@ import org.testing.testSteps.HTTPMethods;
 import org.testing.utilities.JsonReplacement;
 import org.testing.utilities.ParsingJsonUsingOrgJson;
 import org.testing.utilities.PropertiesHandling;
+import org.testng.annotations.Test;
+
 import io.restassured.response.Response;
 
 public class TC2_GetAllRequest 
 {
+	@Test
 	public void testCase2() throws IOException 
 	{
 		Properties prObject= PropertiesHandling.readPropteries("../CompleteAPIFramework/Environment.properties");

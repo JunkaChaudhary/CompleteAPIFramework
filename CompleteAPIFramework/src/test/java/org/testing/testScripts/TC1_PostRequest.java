@@ -8,18 +8,20 @@ import org.testing.utilities.JsonReplacement;
 import org.testing.utilities.ParsingJsonUsingJsonPath;
 import org.testing.utilities.PropertiesHandling;
 import org.testing.utilities.RandomData;
+import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
 
 public class TC1_PostRequest 
 {
 	static String returnIdValue;
+	@Test
 	public void testCase1() throws IOException 
 	{
 		String requestBody= JsonHandling.readJsonFile("../CompleteAPIFramework/src/test/java/org/testing/resources/inputData.json");
 		Properties prObject= PropertiesHandling.readPropteries("../CompleteAPIFramework/Environment.properties");
 		String idValue=RandomData.generateRandomData();
-		requestBody= JsonReplacement.replaceJson(requestBody, "id", idValue );
+		requestBody= JsonReplacement.replaceJson(requestBody, "id", idValue);
 		HTTPMethods http= new HTTPMethods(prObject);	
 		Response res= http.postRequest(requestBody, "API_URI");
 		returnIdValue= ParsingJsonUsingJsonPath.jsonparse(res, "id");

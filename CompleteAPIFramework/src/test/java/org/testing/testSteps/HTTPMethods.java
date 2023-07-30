@@ -57,4 +57,45 @@ public class HTTPMethods
 		System.out.println("TC3 Response data is: " +res.asString());
 		return res;
 	}
+	
+	public Response putRequest(String requestBody, String uriKeyName, String endPoint) 
+	{
+		String uriValue= pr.getProperty(uriKeyName)+"/"+endPoint;
+		Response res=
+		given()
+		.contentType(ContentType.JSON)
+		.body(requestBody)
+		.when()
+		.put(uriValue);
+		System.out.println("TC4 Status code is: " +res.statusCode());
+		System.out.println("TC4 Response data is: " +res.asString());
+		return res;
+	}
+	
+	public Response patchRequest(String requestBody, String uriKeyName, String endPoint) 
+	{
+		String uriValue= pr.getProperty(uriKeyName)+"/"+endPoint;
+		Response res=
+		given()
+		.contentType(ContentType.JSON)
+		.body(requestBody)
+		.when()
+		.patch(uriValue);
+		System.out.println("TC5 Status code is: " +res.statusCode());
+		System.out.println("TC5 Response data is: " +res.asString());
+		return res;
+	}
+	
+	public Response deleteParticular(String uriKeyName, String endPoint) 
+	{
+		String uriValue= pr.getProperty(uriKeyName)+"/"+endPoint;
+		Response res=
+		given()
+		.contentType(ContentType.JSON)
+		.when()
+		.delete(uriValue);
+		System.out.println("TC6 Status code is: " +res.statusCode());
+		System.out.println("TC6 Response data is: " +res.asString());
+		return res;
+	}
 }
